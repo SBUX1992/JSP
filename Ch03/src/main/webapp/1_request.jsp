@@ -28,22 +28,22 @@
 		<h3>request 내장객체</h3>
 		
 		<h4>로그인</h4>
-		<form action="./proc/LoginProc.jsp" method="post">
-			<input type="text" name="uid" placeholder="아이디 입력"/><br>
-			<input type="password" name="pass" placeholder="비밀번호 입력"/><br>
+		<form action="./proc/loginProc.jsp" method="post">
+			<input type="text" name="uid" placeholder="아이디 입력"/><br/>
+			<input type="password" name="pass" placeholder="비밀번호 입력"/><br/>
 			<input type="submit" value="로그인"/>
 		</form>
-			
+		
 		<h4>회원가입</h4>
 		<form action="./proc/registerProc.jsp" method="post">
-			<table>
+			<table border="1">
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="name" placeholder="이름 입력"></td>
+					<td><input type="text" name="name" placeholder="이름 입력"/></td>
 				</tr>
 				<tr>
 					<td>생년월일</td>
-					<td><input type="date" name="birth" placeholder="생년월일 선택"></td>
+					<td><input type="date" name="birth" placeholder="생년월일 선택"/></td>
 				</tr>
 				<tr>
 					<td>주소</td>
@@ -60,37 +60,37 @@
 				<tr>
 					<td>성별</td>
 					<td>
-						<lable><input type="radio" name="gender" value="1">남</lable>
-						<lable><input type="radio" name="gender" value="2">여</lable>
+						<label><input type="radio" name="gender" value="1"/>남</label>
+						<label><input type="radio" name="gender" value="2"/>여</label>
 					</td>
 				</tr>
 				<tr>
 					<td>취미</td>
 					<td>
-						<lable><input type="checkbox" name="hobby" value="등산">등산하기</lable>
-						<lable><input type="checkbox" name="hobby" value="독서">독서하기</lable>
-						<lable><input type="checkbox" name="hobby" value="여행">여행하기</lable>
-						<lable><input type="checkbox" name="hobby" value="운동">운동하기</lable>
-						<lable><input type="checkbox" name="hobby" value="게임">게임하기</lable>
+						<label><input type="checkbox" name="hobby" value="등산"/>등산하기</label>
+						<label><input type="checkbox" name="hobby" value="독서"/>독서하기</label>
+						<label><input type="checkbox" name="hobby" value="여행"/>여행하기</label>
+						<label><input type="checkbox" name="hobby" value="운동"/>운동하기</label>
+						<label><input type="checkbox" name="hobby" value="게임"/>게임하기</label>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="right">
-						<input type="submit" value="회원가입">
+						<input type="submit" value="회원가입"/>
 					</td>
 				</tr>
 			</table>
 		</form>
 		
-		<h4>client 정보 확인</h4>
+		<h4>Client 정보 확인</h4>
 		<p>
-			헤더정보 : <%= request.getHeader("User-Agent") %><br>
-			포로토콜 : <%= request.getProtocol() %><br>
-			서버이름 : <%= request.getServerName() %><br>
-			요쳥주소 : <%= request.getRequestURL() %><br>
-			요청경로 : <%= request.getRequestURI() %><br>
+			헤더정보 : <%= request.getHeader("User-Agent") %><br/>
+			프로토콜 : <%= request.getProtocol() %><br/>
+			서버이름 : <%= request.getServerName() %><br/>
+			요청주소 : <%= request.getRequestURL() %><br/>
+			요청경로 : <%= request.getRequestURI() %><br/>
 			클라이언트 IP주소 : <%= request.getRemoteAddr() %>
-			
-		</p>		
+		</p>
+		
 	</body>
 </html>

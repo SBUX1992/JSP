@@ -3,20 +3,17 @@
 	// 파라미터 데이터 수신
 	String uid = request.getParameter("uid");
 	String pass = request.getParameter("pass");
-	
 %>
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Login 처리 페이지</title>
+		<title>login 처리 페이지</title>
 	</head>
 	<body>
 		<h3>로그인 처리 페이지</h3>
-		
 		<p>
-			아이디 : <%= uid %><br>
+			아이디 : <%= uid %><br/>
 			비밀번호 : <%= pass %>
 		</p>
 		
