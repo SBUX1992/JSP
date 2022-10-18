@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
 <main id="user" class="login">
-    <form action="../list.html">
+    <form action="../list.jsp">
         <table border="0">
             <tr>
                 <td><img src="/JBoard1/img/login_ico_id.png" alt="로그인"/></td>
@@ -24,4 +24,3 @@
     </div>
 </main>
 <%@ include file="./_footer.jsp" %>
-        
