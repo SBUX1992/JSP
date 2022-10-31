@@ -4,10 +4,9 @@
 	// 로그인 여부에 따라 페이지 분기
 	UserBean sessUser = (UserBean)session.getAttribute("sessUser");
 	
-	if(true){
+	if(sessUser == null){
 		pageContext.forward("./user/login.jsp");
 	}else{
 		pageContext.forward("./list.jsp");
 	}
-
 %>

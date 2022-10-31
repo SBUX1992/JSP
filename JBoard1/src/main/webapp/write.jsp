@@ -2,7 +2,7 @@
 <%@ include file="./_header.jsp" %>
 <main id="board" class="write">
     <form action="/JBoard1/proc/writeProc.jsp" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="uid" value="<%= sessUser.getUid() %>"/>
+    	<input type="hidden" name="uid" value="<%= sessUser.getUid() %>"/>
         <table border="0">
             <caption>글쓰기</caption>
             <tr>
