@@ -46,20 +46,21 @@
 					
 					// 데이터 전송
 					$.ajax({
-		 				url:'./json/register.jsp',
-		 				method:'post',
-		 				data: jsonData,
-		 				dataType:'json',
-		 				success: function(data){
-	 						console.log(data);
-	 						
-	 						if(data.result == 1){
-	 							alert('데이터 입력 성공!');
-	 						}else{
-	 							alert('데이터 입력 실패!');
-	 						}
-		 				}
-	 				});
+						url: './json/register.jsp',
+						method: 'post',
+						data: jsonData,
+						dataType: 'json',
+						success: function(data){
+							console.log(data);
+							
+							if(data.result == 1){
+								alert('데이터 입력 성공!');
+							}else{
+								alert('데이터 입력 실패!');
+							}
+							
+						}
+					});
 					
 				});
 				
