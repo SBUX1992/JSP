@@ -7,12 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+
 import kr.co.jboard1.bean.ArticleBean;
 import kr.co.jboard1.bean.FileBean;
 import kr.co.jboard1.db.DBCP;
 import kr.co.jboard1.db.Sql;
 
 public class ArticleDAO {
+	
+	Logger logger = Logger
 	
 	private static ArticleDAO instance = new ArticleDAO();
 	public static ArticleDAO getInstance() {
@@ -24,6 +28,7 @@ public class ArticleDAO {
 	public int insertArticle(ArticleBean article) {
 		int parent = 0;
 		try{
+			logger.info("insertArticle start...");
 			Connection conn = DBCP.getConnection();
 			
 			// 트랜젝션 시작
@@ -54,6 +59,7 @@ public class ArticleDAO {
 			conn.close();
 		}catch(Exception e){
 			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		
 		return parent;
@@ -61,6 +67,7 @@ public class ArticleDAO {
 	
 	public void insertFile(int parent, String newName, String fname) {
 		try{
+			logger.info("insertFile start...");
 			Connection conn = DBCP.getConnection();
 			PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_FILE);
 			psmt.setInt(1, parent);
@@ -73,6 +80,7 @@ public class ArticleDAO {
 			
 		}catch(Exception e){
 			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 	
@@ -267,8 +275,71 @@ public class ArticleDAO {
 		return comments;
 	}
 	
-	public void updateArticle() {}
-	public void deleteArticle() {}
+	public void updateArticle(String no, String title, String content) {
+		
+		try {
+			Connection conn = DBCP.getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE);
+			psmt.setString(1, title);
+			psmt.setString(2, content);
+			psmt.setString(3, no);
+			
+			psmt.executeUpdate();
+			psmt.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void deleteArticle(String no) {
+		try {
+			Connection conn = DBCP.getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.DELETE_ARTICLE);
+			psmt.setString(1, no);
+			psmt.setString(2, no);
+			
+			psmt.executeUpdate();
+			psmt.close();
+			conn.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public String deleteFile(String parent) {
+		
+		String newName = null;
+		
+		try {
+			
+			Connection conn = DBCP.getConnection();
+			
+			conn.setAutoCommit(false);
+			
+			PreparedStatement psmt1 = conn.prepareStatement(Sql.SELECT_FILE_WITH_PARENT);
+			PreparedStatement psmt2 = conn.prepareStatement(Sql.DELETE_FILE);
+			psmt1.setString(1, parent);
+			psmt2.setString(1, parent);
+			
+			ResultSet rs = psmt1.executeQuery();
+			psmt2.executeUpdate();
+			
+			conn.commit();
+			
+			if(rs.next()) {
+				newName = rs.getString(3);
+			}
+
+			psmt1.close();
+			psmt2.close();
+			conn.close();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return newName;
+	}
 	
 	// 전체 게시물 카운트
 	public int selectCountTotal() {
@@ -322,7 +393,71 @@ public class ArticleDAO {
 			 e.printStackTrace();
 		}
 	}
+	
+	public int updateComment(String no, String content) {
+		
+		int result = 0;
+		
+		try {
+			Connection conn = DBCP.getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_COMMENT);
+			psmt.setString(1, content);
+			psmt.setString(2, no);
+			
+			result = psmt.executeUpdate();
+			psmt.close();
+			conn.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	public int deleteComment(String no) {
+		int result = 0;
+		
+		try {
+			Connection conn = DBCP.getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.DELETE_COMMENT);
+			psmt.setString(1, no);
+			
+			result = psmt.executeUpdate();
+			psmt.close();
+			conn.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
