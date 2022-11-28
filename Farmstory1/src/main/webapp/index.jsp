@@ -5,6 +5,17 @@
 <%@ include file="./_header.jsp" %>
 <%
 	List<ArticleBean> latests = ArticleDAO.getInstance().selectLatest();
+
+	if(latests.size() < 15){
+		ArticleBean article = new ArticleBean();
+		article.setNo(0);
+		article.setTitle("제목입니다.");
+		article.setRdate("22-11-17");
+		
+		for(int i=0; i<15; i++){
+			latests.add(article);
+		}
+	}
 %>
 <script>
 	

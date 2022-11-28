@@ -1,5 +1,5 @@
-<%@page import="java.sql.Statement"%>
 <%@page import="config.DBCP"%>
+<%@page import="java.sql.Statement"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>

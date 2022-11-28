@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="/_header.jsp"/>
+<jsp:include page="./_header.jsp"/>
         <main id="board">
             <section class="view">
                 
@@ -51,7 +51,7 @@
                     <form action="#">
                         <textarea name="content">댓글내용 입력</textarea>
                         <div>
-                            <a href="#" class="btn btnCancel">취소</a>
+                            <a href="/JBoard2/list.do" class="btn btnCancel">취소</a>
                             <input type="submit" value="작성완료" class="btn btnComplete"/>
                         </div>
                     </form>
@@ -59,4 +59,4 @@
 
             </section>
         </main>
-        <jsp:include page="/_footer.jsp"/>
+        <jsp:include page="./_footer.jsp"/>
