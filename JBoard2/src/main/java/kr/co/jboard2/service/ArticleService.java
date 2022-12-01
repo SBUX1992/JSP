@@ -14,6 +14,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.co.jboard2.dao.ArticleDAO;
 import kr.co.jboard2.vo.ArticleVO;
+import kr.co.jboard2.vo.UserVO;
 
 public enum ArticleService {
 	
@@ -117,6 +118,21 @@ public enum ArticleService {
 	public int getStartNum(int currentPage) {
 		return (currentPage - 1) * 10;
 	}
+	
+//	public int updateUser(UserVO vo) {
+//		return dao.updateUser(vo);
+//	}
+	
+	public int updateUserPassword(String uid, String pass) {
+		return updateUserPassword(pass, uid);
+	}
+	
+//	public int deleteUser(String uid) {
+//		return dao.deleteUser(uid);
+//	}
+	
+	
+	
 	
 }
 

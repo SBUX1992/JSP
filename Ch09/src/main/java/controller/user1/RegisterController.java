@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.User1Dao;
-import vo.User1Vo;
+import dao.User1DAO;
+import vo.User1VO;
 
 @WebServlet("/user1/register.do")
 public class RegisterController extends HttpServlet {
@@ -34,13 +34,13 @@ public class RegisterController extends HttpServlet {
 		String hp   = req.getParameter("hp");
 		String age  = req.getParameter("age");
 		
-		User1Vo vo = new User1Vo();
+		User1VO vo = new User1VO();
 		vo.setUid(uid);
 		vo.setName(name);
 		vo.setHp(hp);
 		vo.setAge(age);
 
-		User1Dao.getInstance().insertUser(vo);
+		User1DAO.getInstance().insertUser(vo);
 		
 		// 리다이렉트
 		resp.sendRedirect("/Ch09/user1/list.do");

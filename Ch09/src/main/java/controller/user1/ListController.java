@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.User1Dao;
-import vo.User1Vo;
+import dao.User1DAO;
+import vo.User1VO;
 
 @WebServlet("/user1/list.do")
 public class ListController extends HttpServlet {
@@ -23,7 +23,7 @@ public class ListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		List<User1Vo> users = User1Dao.getInstance().selectUsers();
+		List<User1VO> users = User1DAO.getInstance().selectUsers();
 		
 		// View에서 데이터 출력을 위한 request Scope 데이터 설정 
 		req.setAttribute("users", users);

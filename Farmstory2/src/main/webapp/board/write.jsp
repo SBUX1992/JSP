@@ -4,7 +4,7 @@
 <main id="board">
     <section class="write">
 
-        <form action="#">
+        <form action="/Farmstory2/write.do" method="post" enctype="multipart/form-data">
             <table border="0">
                 <caption>글쓰기</caption>
                 <tr>
@@ -26,7 +26,7 @@
             </table>
             
             <div>
-                <a href="./list.do?group=${group}&cate=${cate}" class="btn btnCancel">취소</a>
+                <a href="/Farmstory2/list.do?group=${group}&cate=${cate}" class="btn btnCancel">취소</a>
                 <input type="submit" value="작성완료" class="btn btnComplete"/>
             </div>
         </form>

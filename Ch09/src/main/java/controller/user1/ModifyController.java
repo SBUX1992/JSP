@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.User1Dao;
-import vo.User1Vo;
+import dao.User1DAO;
+import vo.User1VO;
 
 @WebServlet("/user1/modify.do")
 public class ModifyController extends HttpServlet {
@@ -22,7 +22,7 @@ public class ModifyController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String uid = req.getParameter("uid");
-		User1Vo vo = User1Dao.getInstance().selectUser(uid);
+		User1VO vo = User1DAO.getInstance().selectUser(uid);
 		
 		req.setAttribute("vo", vo);
 		
@@ -37,13 +37,13 @@ public class ModifyController extends HttpServlet {
 		String hp   = req.getParameter("hp");
 		String age  = req.getParameter("age");
 		
-		User1Vo vo = new User1Vo();
+		User1VO vo = new User1VO();
 		vo.setUid(uid);
 		vo.setName(name);
 		vo.setHp(hp);
 		vo.setAge(age);
 		
-		User1Dao.getInstance().updateUser(vo);
+		User1DAO.getInstance().updateUser(vo);
 		
 		// 리다이렉트
 		resp.sendRedirect("/Ch09/user1/list.do");

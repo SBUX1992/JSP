@@ -1,4 +1,9 @@
+<%@page import="kr.co.farmstory2.vo.UserVO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	UserVO sessUser = (UserVO) session.getAttribute("sessUser");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,9 +37,13 @@
             <a href="/Farmstory2/" class="logo"><img src="/Farmstory2/img/logo.png" alt="로고"/></a>
             <p>
                 <a href="/Farmstory2/">HOME |</a>
-                <a href="/Farmstory2/user/login.do">로그인 |</a>
-                <a href="/Farmstory2/user/terms.do">회원가입 |</a>
-                <a href="/Farmstory2/board/list.do">고객센터</a>
+                <% if(sessUser == null){ %>
+	                <a href="/Farmstory2/user/login.do">로그인 |</a>
+	                <a href="/Farmstory2/user/terms.do">회원가입 |</a>
+	            <% }else{ %>
+	                <a href="/Farmstory2/user/logout.do?uid=${sessUser.uid}">로그아웃|</a>
+	            <% } %>
+	            <a href="/Farmstory2/board/list.do">고객센터</a>
             </p>
             <img src="/Farmstory2/img/head_txt_img.png" alt="3만원 이상 무료배송"/>
             

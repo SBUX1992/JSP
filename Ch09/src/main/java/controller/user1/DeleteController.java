@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.User1Dao;
+import dao.User1DAO;
 
 @WebServlet("/user1/delete.do")
 public class DeleteController extends HttpServlet {
@@ -22,7 +22,7 @@ public class DeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String uid = req.getParameter("uid");
-		User1Dao.getInstance().deleteUser(uid);
+		User1DAO.getInstance().deleteUser(uid);
 		
 		resp.sendRedirect("/user1/list.do");
 	}

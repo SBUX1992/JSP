@@ -239,6 +239,31 @@ $(function(){
 		}
 	});
 	
+	$('.deleteUser').click(function(){
+		let delChk = confirm('정말 탈퇴하시겠습니까?');
+		
+		if(delChk == 1){
+			let uid = $('input[name=uid]').val();
+			
+			$.ajax({
+				url: '/JBoard2/user/delete.do',
+				method: 'post',
+				data: {"uid": uid},
+				dataType: 'json',
+				success: function(data){
+					console.log(data.result);
+					if(data.result > 0){
+						alert('회원탈퇴가 정상처리되었습니다.');
+						location.href = "/JBoard2/user/login.do";
+					}
+				}
+					
+			});
+		}
+	});
+	
+	
+	
 	// 휴대폰 유효성 검사
 	$('input[name=hp]').focusout(function(){
 		let hp = $(this).val();

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:include page="../_header.jsp"/>
+<jsp:include page="/WEB-INF/_header.jsp"/>
 
 <div id="sub">
     <div><img src="/Farmstory2/img/sub_top_tit5.png" alt="COMMUNITY"></div>
@@ -33,4 +33,4 @@
     </section>
 
 </div>
-<jsp:include page="../_footer.jsp"/>
+<jsp:include page="/WEB-INF/_footer.jsp"/>

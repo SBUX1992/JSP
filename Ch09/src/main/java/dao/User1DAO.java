@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import db.DBHelper;
-import vo.User1Vo;
+import vo.User1VO;
 
-public class User1Dao extends DBHelper {
+public class User1DAO extends DBHelper {
 
-	private static User1Dao instance = new User1Dao();
-	public static User1Dao getInstance() {
+	private static User1DAO instance = new User1DAO();
+	public static User1DAO getInstance() {
 		return instance;
 	}
 	
-	private User1Dao() {}
+	private User1DAO() {}
 	
-	public void insertUser(User1Vo vo) {
+	public void insertUser(User1VO vo) {
 		
 		try {
 			conn = getConnection();
@@ -31,9 +31,9 @@ public class User1Dao extends DBHelper {
 		}
 	}
 	
-	public User1Vo selectUser(String uid) {
+	public User1VO selectUser(String uid) {
 		
-		User1Vo vo = null;
+		User1VO vo = null;
 		
 		try {
 			conn = getConnection();
@@ -42,7 +42,7 @@ public class User1Dao extends DBHelper {
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
-				vo = new User1Vo();
+				vo = new User1VO();
 				vo.setUid(rs.getString(1));
 				vo.setName(rs.getString(2));
 				vo.setHp(rs.getString(3));
@@ -58,9 +58,9 @@ public class User1Dao extends DBHelper {
 		return vo;
 	}
 	
-	public List<User1Vo> selectUsers() {
+	public List<User1VO> selectUsers() {
 		
-		List<User1Vo> users = new ArrayList<>();
+		List<User1VO> users = new ArrayList<>();
 		
 		try {
 			conn = getConnection();
@@ -68,7 +68,7 @@ public class User1Dao extends DBHelper {
 			rs = stmt.executeQuery("select * from `user1`");
 			
 			while(rs.next()) {
-				User1Vo vo = new User1Vo();
+				User1VO vo = new User1VO();
 				vo.setUid(rs.getString(1));
 				vo.setName(rs.getString(2));
 				vo.setHp(rs.getString(3));
@@ -85,7 +85,7 @@ public class User1Dao extends DBHelper {
 		return users;
 	}
 	
-	public void updateUser(User1Vo vo) {
+	public void updateUser(User1VO vo) {
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement("update `user1` set `name`=?, `hp`=?, `age`=? where `uid`=?");
